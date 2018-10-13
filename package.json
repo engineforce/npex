@@ -1,6 +1,6 @@
 {
   "name": "npex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find npm package executables in node_modules/.bin recursively, and execute them.",
   "main": "index.js",
   "scripts": {

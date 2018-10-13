@@ -10,9 +10,12 @@ function exec({ args, verbose }) {
 
   let pwd = process.cwd();
 
-  do {
+  while (true) {
     let executable = path.resolve(pwd, `node_modules/.bin/${args[0]}`);
 
+    // if (verbose) {
+    //   console.log(`${executable} ${args.slice(1).join(' ')}`);
+    // }
     if (fs.existsSync(executable)) {
       if (verbose) {
         console.log(`${executable} ${args.slice(1).join(' ')}`);
@@ -21,8 +24,13 @@ function exec({ args, verbose }) {
       return output.code;
     }
 
+    if (pwd == process.env.HOME) {
+      console.error(`Error: ${args[0]}: command not found.`);
+      return 1;
+    }
+
     pwd = path.resolve(pwd, '../');
-  } while (pwd != process.env.HOME);
+  }
 
   return 0;
 }
