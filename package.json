@@ -1,0 +1,20 @@
+{
+  "name": "npex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install -g ./"
+  },
+  "bin": {
+    "npex": "./bin/npex.js"
+  },
+  "preferGlobal": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/shelljs": "^0.8.0",
+    "shelljs": "^0.8.2"
+  }
+}
