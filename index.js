@@ -25,7 +25,7 @@ function exec({ args, verbose }) {
     }
 
     if (pwd == process.env.HOME) {
-      output = shell.exec(`${args.join(' ')}`);
+      output = shell.exec(`${args.join(' ')} 2>&1`);
       return output.code;
     }
 

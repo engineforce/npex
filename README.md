@@ -8,7 +8,7 @@ Find npm package executables in node_modules/.bin **recursively**, and execute t
 
 This is similar to [npx](https://www.npmjs.com/package/npx) with following differences:
 
-1. npex tries to find executables in node_modules/.bin **recursively** (similar to the [Node.js module resolution mechanism](https://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders)). E.g.,
+1. npex tries to find executables in node_modules/.bin **recursively** (similar to the [Node.js module resolution mechanism](https://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders)). E.g., `npex jest`
 
    - ~/my/git/engineforce/npex/node_modules/.bin/jest
    - ~/my/git/engineforce/node_modules/.bin/jest
