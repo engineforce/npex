@@ -26,6 +26,7 @@ npex [--verbose] <command> [<args>...]
 npex lerna ls
 npex --verbose lerna ls
 
+npex tsc
 npex tsc --listFiles
 
 npex jest

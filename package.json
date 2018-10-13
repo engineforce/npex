@@ -1,7 +1,7 @@
 {
   "name": "npex",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find npm package executables in node_modules/.bin recursively, and execute them.",
   "main": "index.js",
   "scripts": {
     "build": "npm install -g ./"
@@ -10,11 +10,27 @@
     "npex": "./bin/npex.js"
   },
   "preferGlobal": true,
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "@types/shelljs": "^0.8.0"
+  },
   "dependencies": {
-    "@types/shelljs": "^0.8.0",
     "shelljs": "^0.8.2"
-  }
+  },
+  "author": {
+    "name": "engineforce",
+    "url": "https://github.com/engineforce"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/engineforce/npex.git"
+  },
+  "homepage": "https://github.com/engineforce/npex",
+  "license": "MIT",
+  "keywords": [
+    "npx",
+    "npm",
+    "package",
+    "executable",
+    "global"
+  ]
 }
