@@ -25,8 +25,8 @@ function exec({ args, verbose }) {
     }
 
     if (pwd == process.env.HOME) {
-      console.error(`Error: ${args[0]}: command not found.`);
-      return 1;
+      output = shell.exec(`${args.join(' ')}`);
+      return output.code;
     }
 
     pwd = path.resolve(pwd, '../');

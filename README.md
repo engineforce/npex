@@ -15,6 +15,7 @@ This is similar to [npx](https://www.npmjs.com/package/npx) with following diffe
    - ~/my/git/node_modules/.bin/jest
    - ~/my/node_modules/.bin/jest
    - ~/node_modules/.bin/jest
+   - (globally installed jest)
 
 2. npex will not install anything if executables are not found.
 
@@ -44,3 +45,6 @@ npex tsc --listFiles
 npex jest
 npex jest --help
 ```
+
+[1]: https://badge.fury.io/js/npex.svg
+[2]: https://badge.fury.io/js/npex
