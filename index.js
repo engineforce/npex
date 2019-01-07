@@ -14,8 +14,9 @@ function exec({ args, verbose }) {
     let executable = path.resolve(pwd, `node_modules/.bin/${args[0]}`);
 
     // if (verbose) {
-    //   console.log(`${executable} ${args.slice(1).join(' ')}`);
+    //   console.log(`Search in ${executable}`);
     // }
+
     if (fs.existsSync(executable)) {
       if (verbose) {
         console.log(`${executable} ${args.slice(1).join(' ')}`);
@@ -24,7 +25,14 @@ function exec({ args, verbose }) {
       return output.code;
     }
 
-    if (pwd == process.env.HOME) {
+    if (
+      pwd == undefined ||
+      pwd == process.env.HOME ||
+      pwd.toLowerCase().indexOf(process.env.HOME.toLowerCase()) != 0
+    ) {
+      if (verbose) {
+        console.log(`(global) ${args.join(' ')}`);
+      }
       output = shell.exec(`${args.join(' ')} 2>&1`);
       return output.code;
     }
