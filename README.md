@@ -1,5 +1,7 @@
 # npex
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/engineforce/npex.svg)](https://greenkeeper.io/)
+
 Find npm package executable in node_modules/.bin **recursively**, and execute the first occurrence found.
 
 [![NPM version][1]][2]
