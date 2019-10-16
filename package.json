@@ -1,6 +1,6 @@
 {
   "name": "npex",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Find npm package executables in node_modules/.bin recursively, and execute them.",
   "main": "index.js",
   "scripts": {
@@ -10,11 +10,8 @@
     "npex": "./bin/npex.js"
   },
   "preferGlobal": true,
-  "devDependencies": {
-    "@types/shelljs": "^0.8.0"
-  },
   "dependencies": {
-    "shelljs": "^0.8.2"
+    "exec-sh": "^0.3.2"
   },
   "author": {
     "name": "engineforce",

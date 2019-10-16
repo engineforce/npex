@@ -1,28 +1,28 @@
-const shell = require('shelljs');
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
+const execSh = require('exec-sh').promise
 
-function exec({ args, verbose }) {
+async function exec({ args, verbose }) {
   if (args == undefined || args.length <= 0) {
-    console.error('Error: No executable specified.');
-    return 1;
+    console.error('Error: No executable specified.')
+    return 1
   }
 
-  let pwd = process.cwd();
+  let pwd = process.cwd()
 
   while (true) {
-    let executable = path.resolve(pwd, `node_modules/.bin/${args[0]}`);
+    let executable = path.resolve(pwd, `node_modules/.bin/${args[0]}`)
 
-    // if (verbose) {
-    //   console.log(`Search in ${executable}`);
-    // }
+    if (verbose) {
+      console.log(`Search in ${executable}`)
+    }
 
     if (fs.existsSync(executable)) {
       if (verbose) {
-        console.log(`${executable} ${args.slice(1).join(' ')}`);
+        console.log(`${executable} ${args.slice(1).join(' ')}`)
       }
-      output = shell.exec(`${executable} ${args.slice(1).join(' ')}`);
-      return output.code;
+
+      return await execSh(`${executable} ${args.slice(1).join(' ')}`)
     }
 
     if (
@@ -31,16 +31,14 @@ function exec({ args, verbose }) {
       pwd.toLowerCase().indexOf(process.env.HOME.toLowerCase()) != 0
     ) {
       if (verbose) {
-        console.log(`(global) ${args.join(' ')}`);
+        console.log(`(global) ${args.join(' ')}`)
       }
-      output = shell.exec(`${args.join(' ')} 2>&1`);
-      return output.code;
+
+      return await execSh(`${args.join(' ')} 2>&1`)
     }
 
-    pwd = path.resolve(pwd, '../');
+    pwd = path.resolve(pwd, '../')
   }
-
-  return 0;
 }
 
-module.exports = { exec };
+module.exports = { exec }

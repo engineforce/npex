@@ -1,32 +1,37 @@
 #!/usr/bin/env node
-var npex = require('../index.js');
+var npex = require('../index.js')
 
-function main() {
+async function main() {
   // Delete the 0 and 1 argument (node and script.js)
-  var args = process.argv.splice(process.execArgv.length + 2);
-  let verbose = undefined;
+  var args = process.argv.splice(process.execArgv.length + 2)
+  let verbose = undefined
 
   if (args[0] == '--help') {
-    showHelp();
-    process.exit(0);
+    return showHelp()
   }
 
   if (args[0] == '--verbose') {
-    verbose = true;
-    args = args.slice(1);
+    verbose = true
+    args = args.slice(1)
   }
 
   if (args.length <= 0) {
-    console.log('Error: no command given.');
-    showHelp();
-    process.exit(1);
+    const error = new Error('Error: no command given.')
+    console.error(error.message)
+    showHelp()
+    throw error
   }
 
-  process.exit(npex.exec({ args, verbose }));
+  await npex.exec({ args, verbose })
 }
 
 function showHelp() {
-  console.log('Usage: npex [--verbose] <command> [<args>...]');
+  console.log('Usage: npex [--verbose] <command> [<args>...]')
 }
 
-main();
+main().then(
+  () => {},
+  (error) => {
+    process.exit(error.code || 1)
+  }
+)

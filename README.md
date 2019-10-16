@@ -44,7 +44,12 @@ npex tsc --listFiles
 
 npex jest
 npex jest --help
+npex jest --watch
 ```
+
+## History
+
+- 1.0.5 - Supports commands with user input such as `jest --watch`
 
 [1]: https://badge.fury.io/js/npex.svg
 [2]: https://badge.fury.io/js/npex
